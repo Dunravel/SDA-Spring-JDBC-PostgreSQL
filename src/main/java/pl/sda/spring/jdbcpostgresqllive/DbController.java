@@ -18,6 +18,9 @@ public class DbController {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping(value = "read2")
     public List<String> readData2(){
         return userDao.read();
@@ -27,6 +30,20 @@ public class DbController {
     public String writeData2(){
         userDao.save();
         return "";
+    }
+
+    @GetMapping(value = "read3")
+    public List<User> readData3(){
+        List<User> users = new ArrayList<>();
+        Iterable<User> iterator = userRepository.findAll();
+        iterator.iterator().forEachRemaining(users::add);
+        return users;
+    }
+
+    @GetMapping(value = "write3")
+    public String writeData3(){
+        userRepository.save(new User("Adam","Miauczynski"));
+        return null;
     }
 
     @GetMapping(value = "read")
