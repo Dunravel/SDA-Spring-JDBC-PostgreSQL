@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.sda.spring.otherbeans.Converter;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -24,6 +25,9 @@ public class DbController {
 
     @Autowired
     private UserBuilder userBuilder;
+
+    @Autowired
+    private Converter converter;
 
     @PostConstruct
     public void initialize(){
