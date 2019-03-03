@@ -5,6 +5,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 public class DbController {
 
@@ -13,7 +17,16 @@ public class DbController {
 
     @GetMapping(value = "read")
     public String readData(){
-        return "from read";
+        String sqlQuery = "SELECT * FROM public.user";
+        List<Map<String, Object>> users = jdbcTemplate.queryForList(sqlQuery);
+
+        List<String> results = new ArrayList<>();
+
+        for(Map<String,Object> user:users){
+            String userStr = user.get("first_name") + " " + user.get("last_name");
+            results.add(userStr);
+        }
+        return "users amount: " + users.size() + "\n " + results;
     }
 
     @GetMapping(value = "write")
