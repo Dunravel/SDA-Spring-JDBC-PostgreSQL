@@ -15,6 +15,20 @@ public class DbController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private UserDao userDao;
+
+    @GetMapping(value = "read2")
+    public List<String> readData2(){
+        return userDao.read();
+    }
+
+    @GetMapping(value = "write2")
+    public String writeData2(){
+        userDao.save();
+        return "";
+    }
+
     @GetMapping(value = "read")
     public String readData(){
         String sqlQuery = "SELECT * FROM public.user";
@@ -31,6 +45,10 @@ public class DbController {
 
     @GetMapping(value = "write")
     public String writeData(String text){
+        String sqlQuery = "INSERT INTO public.\"user\"(\n" +
+                "\tfirst_name, id, last_name)\n" +
+                "\tVALUES ('Fiodor',2, 'Dostojewski');";
+        jdbcTemplate.update(sqlQuery);
         return "from write";
     }
 }
