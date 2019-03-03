@@ -8,4 +8,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     User getUserByFirstName(String name);
     List<User> getUsersByFirstNameContains(String text);
+    User getUserByLastNameAndAndFirstName(String lastName, String firstName);
 }

@@ -9,10 +9,10 @@ public class UserConfiguration {
     @Autowired
     private UserRepository userRepository;
 
-    @Bean
-    public void initUsers(){
-        userRepository.save(new User("Adam","Miauczynski"));
-        userRepository.save(new User("Fiodor","Dostoyewski"));
-        userRepository.save(new User("Gal","Anonim"));
-    }
+//    @Bean
+//    public void initUsers(){
+//        userRepository.save(new User("Adam","Miauczynski"));
+//        userRepository.save(new User("Fiodor","Dostoyewski"));
+//        userRepository.save(new User("Gal","Anonim"));
+//    }
 }

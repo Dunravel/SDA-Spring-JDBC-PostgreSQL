@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class UserBuilder {
 
-    public static List<User> getUsers() {
+    public List<User> getUsers() {
         List<User> users = new ArrayList<>();
 
         users.add(new User("Adam","Miauczynski"));
