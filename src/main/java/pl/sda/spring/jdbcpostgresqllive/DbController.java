@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,14 @@ public class DbController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserBuilder userBuilder;
+
+    @PostConstruct
+    public void initialize(){
+        userRepository.saveAll(userBuilder.getUsers());
+    }
 
     @GetMapping(value = "read2")
     public List<String> readData2(){
@@ -37,12 +46,14 @@ public class DbController {
         List<User> users = new ArrayList<>();
         Iterable<User> iterator = userRepository.findAll();
         iterator.iterator().forEachRemaining(users::add);
+
         return users;
     }
 
     @GetMapping(value = "write3")
     public String writeData3(){
-        userRepository.save(new User("Adam","Miauczynski"));
+       // userRepository.save(new User("Adam","Miauczynski"));
+        userRepository.saveAll(userBuilder.getUsers());
         return null;
     }
 
