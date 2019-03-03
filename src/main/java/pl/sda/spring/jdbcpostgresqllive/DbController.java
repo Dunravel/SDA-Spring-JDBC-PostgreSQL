@@ -57,6 +57,12 @@ public class DbController {
         return null;
     }
 
+    @GetMapping(value = "getadam")
+    public String getAdam(){
+        User user = userRepository.getUserByFirstName("Adam");
+        return user.getFirstName() + " " + user.getLastName();
+    }
+
     @GetMapping(value = "read")
     public String readData(){
         String sqlQuery = "SELECT * FROM public.user";
