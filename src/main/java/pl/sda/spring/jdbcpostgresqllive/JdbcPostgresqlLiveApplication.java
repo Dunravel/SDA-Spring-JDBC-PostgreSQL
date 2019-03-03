@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
-@ComponentScan("pl.sda.spring.otherbeans")
+@ComponentScan("pl.sda.spring")
 public class JdbcPostgresqlLiveApplication {
 
     public static void main(String[] args) {
