@@ -13,13 +13,23 @@ public class DbConfiguration {
     @Value("${driver.name}")
     private String driverName;
 
+    @Value("${connection.url}")
+    private String connection;
+
+    @Value("${connection.username}")
+    private String username;
+
+    @Value("${connection.password}")
+    private String password;
+
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driverName);
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/cats");
-        dataSource.setUsername("psql_admin");
-        dataSource.setPassword("Dun123");
+        dataSource.setUrl(connection);
+
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
         return dataSource;
     }
 
