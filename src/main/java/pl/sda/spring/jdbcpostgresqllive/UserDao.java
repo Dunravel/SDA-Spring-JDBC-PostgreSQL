@@ -12,10 +12,7 @@ import java.util.Map;
 
 @Repository
 public class UserDao extends JdbcDaoSupport {
-//    private int id;
-//    private static int lastId;
-    private String firstName;
-    private String lastName;
+
 
     @Autowired
     private DataSource dataSource;
@@ -44,29 +41,5 @@ public class UserDao extends JdbcDaoSupport {
         }
         return results;
 
-    }
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId() {
-//        lastId += 1;
-//        this.id = lastId;
-//    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 }
