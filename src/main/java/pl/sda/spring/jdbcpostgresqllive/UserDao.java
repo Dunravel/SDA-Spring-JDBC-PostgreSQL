@@ -1,7 +1,11 @@
 package pl.sda.spring.jdbcpostgresqllive;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
+
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
 
 @Repository
 public class UserDao extends JdbcDaoSupport {
@@ -10,6 +14,13 @@ public class UserDao extends JdbcDaoSupport {
     private String firstName;
     private String lastName;
 
+    @Autowired
+    private DataSource dataSource;
+
+    @PostConstruct
+    public void initialize(){
+        setDataSource(dataSource);
+    }
 
     public void save(){
         getJdbcTemplate().update("");
