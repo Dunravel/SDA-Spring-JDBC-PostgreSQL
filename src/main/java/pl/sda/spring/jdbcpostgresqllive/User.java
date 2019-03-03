@@ -5,6 +5,15 @@ public class User {
     private String lastName;
     private Long id;
 
+//    constructor without parameters MUST be declared
+    public User() {
+    }
+
+    public User(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
