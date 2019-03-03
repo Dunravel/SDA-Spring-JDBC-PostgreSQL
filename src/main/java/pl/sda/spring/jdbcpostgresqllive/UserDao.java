@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+
+// JDBC pattern dao
 @Repository
 public class UserDao extends JdbcDaoSupport {
 
