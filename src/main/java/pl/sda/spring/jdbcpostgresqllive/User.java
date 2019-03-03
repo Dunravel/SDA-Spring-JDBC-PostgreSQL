@@ -1,8 +1,15 @@
 package pl.sda.spring.jdbcpostgresqllive;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
     private String firstName;
     private String lastName;
+    @Id
+    @GeneratedValue
     private Long id;
 
 //    constructor without parameters MUST be declared
